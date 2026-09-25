@@ -9,9 +9,116 @@
   <meta name="apple-mobile-web-app-title" content="FareSense" />
   <title>FareSense — Uber Driver Profit Copilot</title>
   <meta name="description" content="Decide in seconds whether an Uber offer is actually profitable after pickup miles, fuel, and wear. Built by Futuret3ch and MemeTorrent." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<p>Loading FareSense…</p>
-<script>location.replace('./app.html')</script>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">FS</div>
+        <div>
+          <h1>FareSense</h1>
+          <div class="sub">Uber driver profit copilot — decide before you tap Accept</div>
+          <div class="byline">Produced by Futuret3ch and MemeTorrent</div>
+        </div>
+      </div>
+    </header>
+    <nav class="tabs">
+      <button class="active" data-tab="offer">Offer</button>
+      <button data-tab="shift">Shift</button>
+      <button data-tab="vehicle">Vehicle</button>
+      <button data-tab="why">Why</button>
+    </nav>
+    <section id="tab-offer">
+      <div id="verdict" class="verdict maybe">
+        <div class="kicker">Verdict</div>
+        <h3 id="verdictTitle">Set your vehicle, then punch in the offer</h3>
+        <p id="verdictText" class="hint">Pickup miles are the silent profit killer. This tool prices them in.</p>
+      </div>
+      <div class="metrics">
+        <div class="metric"><span>Gross / total mile</span><b id="mGross">—</b></div>
+        <div class="metric"><span>Net after fuel + wear</span><b id="mNet">—</b></div>
+        <div class="metric"><span>Est. hourly</span><b id="mHour">—</b></div>
+        <div class="metric"><span>vs your floor</span><b id="mFloor">—</b></div>
+      </div>
+      <div class="card">
+        <h2>Incoming offer (from the Uber screen)</h2>
+        <div class="grid three">
+          <div><label>Payout shown ($)</label><input id="payout" type="number" inputmode="decimal" step="0.01" value="14.80" /></div>
+          <div><label>Trip miles</label><input id="tripMiles" type="number" inputmode="decimal" step="0.1" value="7.2" /></div>
+          <div><label>Pickup miles</label><input id="pickupMiles" type="number" inputmode="decimal" step="0.1" value="3.4" /></div>
+          <div><label>Est. trip minutes</label><input id="tripMin" type="number" inputmode="numeric" value="18" /></div>
+          <div><label>Pickup minutes</label><input id="pickupMin" type="number" inputmode="numeric" value="9" /></div>
+          <div><label>Expected tip ($)</label><input id="tip" type="number" inputmode="decimal" step="0.01" value="0" /></div>
+        </div>
+        <p class="hint" style="margin-top:10px">If Uber only shows destination and payout, estimate pickup from the map pin. Dead miles still cost fuel and time even when unpaid.</p>
+      </div>
+    </section>
+    <section id="tab-shift" class="hidden">
+      <div class="card">
+        <h2>Log this offer into today's shift</h2>
+        <div class="row-actions">
+          <button class="btn" id="logTake">Log as accepted</button>
+          <button class="btn ghost" id="logSkip">Log as declined</button>
+        </div>
+        <p class="hint" style="margin-top:10px">Numbers stay on this device only. No account, no upload.</p>
+      </div>
+      <div class="card">
+        <h2>Today</h2>
+        <div class="metrics">
+          <div class="metric"><span>Gross logged</span><b id="sGross">$0</b></div>
+          <div class="metric"><span>Net after vehicle</span><b id="sNet">$0</b></div>
+          <div class="metric"><span>Active minutes</span><b id="sMin">0</b></div>
+          <div class="metric"><span>True hourly</span><b id="sHour">—</b></div>
+        </div>
+        <div style="overflow:auto; margin-top:12px">
+          <table>
+            <thead><tr><th>Time</th><th>Action</th><th>Payout</th><th>Miles</th><th>Net</th></tr></thead>
+            <tbody id="shiftBody"></tbody>
+          </table>
+        </div>
+        <div class="row-actions">
+          <button class="btn ghost" id="clearShift">Clear today</button>
+        </div>
+      </div>
+    </section>
+    <section id="tab-vehicle" class="hidden">
+      <div class="card">
+        <h2>Your real cost of rolling</h2>
+        <div class="grid">
+          <div><label>Fuel price ($ / gal or kWh)</label><input id="fuelPrice" type="number" step="0.01" value="3.89" /></div>
+          <div><label>MPG or mi/kWh</label><input id="mpg" type="number" step="0.1" value="28" /></div>
+          <div><label>Wear / insurance / maint ($ / mile)</label><input id="wear" type="number" step="0.01" value="0.22" /></div>
+          <div><label>Minimum acceptable net $/hour</label><input id="floor" type="number" step="1" value="22" /></div>
+          <div><label>Tax set-aside %</label><input id="taxPct" type="number" step="1" value="25" /></div>
+          <div>
+            <label>IRS mileage reference</label>
+            <select id="irs">
+              <option value="0.76" selected>Jul–Dec 2026 · $0.76</option>
+              <option value="0.725">Jan–Jun 2026 · $0.725</option>
+            </select>
+          </div>
+        </div>
+        <p class="hint" style="margin-top:10px">Default wear of $0.22/mi is a conservative all-in for a typical mid-size sedan after fuel. IRS rate is a tax deduction, not cash — FareSense uses operating cost for the verdict.</p>
+      </div>
+    </section>
+    <section id="tab-why" class="hidden">
+      <div class="card">
+        <h2>The problem this solves</h2>
+        <p class="hint">Uber’s 2026 driver app still does not answer the question that matters in the 8-second accept window:</p>
+        <p><b>“After I drive to the rider, burn fuel, and put miles on this car, is this trip above my floor?”</b></p>
+        <p class="hint">Trackers tell you after the fact. Automation taps for you. FareSense is the missing middle.</p>
+      </div>
+      <div class="card">
+        <h2>Produced by</h2>
+        <p><b>Futuret3ch</b> — product and engineering.</p>
+        <p><b>MemeTorrent</b> — driver experience and distribution.</p>
+      </div>
+    </section>
+    <footer>
+      FareSense is a decision aid, not tax, legal, or earnings advice. Produced by Futuret3ch and MemeTorrent.
+    </footer>
+  </div>
+  <script src="app.js"></script>
 </body>
 </html>
