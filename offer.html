@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#100e0b" />
+  <title>FareSense</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="mark">FS</div>
+        <div>
+          <h1>FareSense</h1>
+          <div class="sub">Price the offer before you tap Accept.</div>
+          <div class="by">Futuret3ch × MemeTorrent</div>
+        </div>
+      </div>
+      <div class="switch">
+        <a class="on" href="offer.html">Offer</a>
+        <a href="shiftclose.html">Hour</a>
+      </div>
+    </div>
+    <nav class="dock">
+      <button class="on" data-tab="offer">Offer</button>
+      <button data-tab="shift">Log</button>
+      <button data-tab="vehicle">Car</button>
+      <button data-tab="why">Why</button>
+    </nav>
+    <section id="tab-offer">
+      <div id="verdict" class="ticket hold">
+        <div class="k">Verdict</div>
+        <h2 id="verdictTitle">Ready</h2>
+        <p id="verdictText">Set the car once. Then punch the numbers on the Uber card.</p>
+      </div>
+      <div class="meters">
+        <div class="meter"><span>Per total mile</span><b id="mGross">—</b></div>
+        <div class="meter"><span>Net this trip</span><b id="mNet">—</b></div>
+        <div class="meter"><span>Est. hourly</span><b id="mHour">—</b></div>
+        <div class="meter"><span>Vs floor</span><b id="mFloor">—</b></div>
+      </div>
+      <div class="panel">
+        <h3>Incoming offer</h3>
+        <div class="g2">
+          <div><label>Payout $</label><input id="payout" type="number" step="0.01" value="14.80"></div>
+          <div><label>Trip miles</label><input id="tripMiles" type="number" step="0.1" value="7.2"></div>
+          <div><label>Pickup miles</label><input id="pickupMiles" type="number" step="0.1" value="3.4"></div>
+          <div><label>Trip minutes</label><input id="tripMin" type="number" value="18"></div>
+          <div><label>Pickup minutes</label><input id="pickupMin" type="number" value="9"></div>
+          <div><label>Expected tip $</label><input id="tip" type="number" step="0.01" value="0"></div>
+        </div>
+      </div>
+    </section>
+    <section id="tab-shift" class="hidden">
+      <div class="panel">
+        <h3>Pin this offer to today</h3>
+        <div class="row">
+          <button class="primary" id="logTake">Accepted</button>
+          <button class="ghost" id="logSkip">Declined</button>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Today</h3>
+        <div class="meters">
+          <div class="meter"><span>Gross</span><b id="sGross">$0</b></div>
+          <div class="meter"><span>Net</span><b id="sNet">$0</b></div>
+          <div class="meter"><span>Minutes</span><b id="sMin">0</b></div>
+          <div class="meter"><span>Hourly</span><b id="sHour">—</b></div>
+        </div>
+        <div style="overflow:auto"><table><thead><tr><th>Time</th><th>Action</th><th>Pay</th><th>Mi</th><th>Net</th></tr></thead><tbody id="shiftBody"></tbody></table></div>
+        <div class="row"><button class="ghost" id="clearShift">Clear today</button></div>
+      </div>
+    </section>
+    <section id="tab-vehicle" class="hidden">
+      <div class="panel">
+        <h3>Your car</h3>
+        <div class="g2">
+          <div><label>Fuel $ / gal or kWh</label><input id="fuelPrice" type="number" step="0.01" value="3.89"></div>
+          <div><label>MPG or mi/kWh</label><input id="mpg" type="number" step="0.1" value="28"></div>
+          <div><label>Wear $ / mile</label><input id="wear" type="number" step="0.01" value="0.22"></div>
+          <div><label>Floor $ / hour</label><input id="floor" type="number" value="22"></div>
+          <div><label>Tax set-aside %</label><input id="taxPct" type="number" value="25"></div>
+          <div><label>IRS reference</label><select id="irs"><option value="0.76" selected>Jul–Dec 2026 $0.76</option><option value="0.725">Jan–Jun 2026 $0.725</option></select></div>
+        </div>
+      </div>
+    </section>
+    <section id="tab-why" class="hidden">
+      <div class="panel"><h3>Why FareSense exists</h3><p class="fine">The offer card shows a headline. Pickup miles are the quiet leak.</p></div>
+    </section>
+    <footer>Decision aid only. Produced by Futuret3ch and MemeTorrent.</footer>
+  </div>
+  <script src="store.js"></script>
+  <script src="offer.js"></script>
+</body>
+</html>
