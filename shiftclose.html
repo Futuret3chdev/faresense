@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#100e0b" />
+  <title>ShiftClose</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="mark alt">SC</div>
+        <div>
+          <h1>ShiftClose</h1>
+          <div class="sub">Decide whether the next hour is still paying.</div>
+          <div class="by">Futuret3ch × MemeTorrent</div>
+        </div>
+      </div>
+      <div class="switch">
+        <a href="offer.html">Offer</a>
+        <a class="on" href="shiftclose.html">Hour</a>
+      </div>
+    </div>
+    <div id="call" class="ticket hold">
+      <div class="k">Call</div>
+      <h2 id="callTitle">How is the hour?</h2>
+      <p id="callText">Enter what the last stretch actually did.</p>
+    </div>
+    <div class="meters">
+      <div class="meter"><span>Shift net</span><b id="nShift">—</b></div>
+      <div class="meter"><span>Shift hourly</span><b id="nHour">—</b></div>
+      <div class="meter"><span>Last 90 min</span><b id="nLate">—</b></div>
+      <div class="meter"><span>Quest leftover</span><b id="nQuest">—</b></div>
+    </div>
+    <div class="panel">
+      <h3>This shift so far</h3>
+      <div class="g2">
+        <div><label>Gross collected $</label><input id="gross" type="number" step="1" value="186"></div>
+        <div><label>Hours online</label><input id="hours" type="number" step="0.1" value="6.5"></div>
+        <div><label>Business miles</label><input id="miles" type="number" step="1" value="112"></div>
+        <div><label>Last 90 min gross $</label><input id="lateGross" type="number" step="1" value="18"></div>
+        <div><label>Last 90 min miles</label><input id="lateMiles" type="number" step="1" value="16"></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Quest or Boost still dangling?</h3>
+      <div class="g2">
+        <div><label>Bonus $ if finished</label><input id="bonus" type="number" step="1" value="40"></div>
+        <div><label>Trips still needed</label><input id="need" type="number" step="1" value="4"></div>
+        <div><label>Est. minutes each</label><input id="eachMin" type="number" step="1" value="22"></div>
+        <div><label>Est. miles each</label><input id="eachMi" type="number" step="0.1" value="8"></div>
+      </div>
+    </div>
+    <footer>Go home is a valid strategy. Produced by Futuret3ch and MemeTorrent.</footer>
+  </div>
+  <script src="store.js"></script>
+  <script src="shiftclose.js"></script>
+</body>
+</html>
