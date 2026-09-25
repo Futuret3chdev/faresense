@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#100e0b" />
+  <title>Fence — Melbourne suburbs</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="mark alt">FN</div>
+        <div>
+          <h1>Fence</h1>
+          <div class="sub">Pick the suburbs you will actually work. Uber will offer the rest.</div>
+          <div class="by">Futuret3ch × MemeTorrent</div>
+        </div>
+      </div>
+      <div class="switch">
+        <a href="offer.html">Offer</a>
+        <a href="shiftclose.html">Hour</a>
+        <a class="on" href="fence.html">Fence</a>
+      </div>
+    </div>
+    <div id="call" class="ticket go">
+      <div class="k">Melbourne</div>
+      <h2 id="callTitle">Richmond · 10 km</h2>
+      <p id="callText">Loading the fence.</p>
+    </div>
+    <div class="meters">
+      <div class="meter"><span>Inside</span><b id="nIn">—</b></div>
+      <div class="meter"><span>Outside</span><b id="nOut">—</b></div>
+      <div class="meter"><span>Ride back</span><b id="nBack">—</b></div>
+      <div class="meter"><span>From start</span><b id="nFrom">—</b></div>
+    </div>
+    <div class="panel">
+      <svg id="map" class="map" viewBox="0 0 100 100" role="img" aria-label="Melbourne suburb fence"></svg>
+      <p class="fine">Mint, you will work it. Dim, refused. Amber is the drop. A dim dot inside the ring means that group is off.</p>
+    </div>
+    <div class="presets">
+      <button type="button" class="preset" data-preset="inner"><b>Inner</b><span>10 km around Richmond. No airport, no south-east.</span></button>
+      <button type="button" class="preset" data-preset="south"><b>South side</b><span>14 km from Brighton. Bayside and inner south.</span></button>
+      <button type="button" class="preset" data-preset="open"><b>All of Melbourne</b><span>40 km, every group. The shift the app wants.</span></button>
+    </div>
+    <div class="panel">
+      <h3>Starting position</h3>
+      <label>Suburb you are willing to work from</label>
+      <select id="start"></select>
+      <label>Radius <b id="radiusLabel">10 km</b></label>
+      <input id="radius" class="range" type="range" min="4" max="40" step="1" value="10" />
+    </div>
+    <div class="panel">
+      <h3>Suburb groups</h3>
+      <p class="fine">On and inside the radius means you will take the drop. Off means the ride back is empty, even if it is close.</p>
+      <div id="groups" class="g2"></div>
+    </div>
+    <div class="panel">
+      <h3>Where the ping is going</h3>
+      <label>Drop suburb</label>
+      <select id="drop"></select>
+      <p id="dropLine" class="fine"></p>
+    </div>
+    <div class="panel">
+      <h3>In the fence</h3>
+      <div id="inside" class="chips"></div>
+    </div>
+    <footer>Straight-line kilometres between suburb centres, then about 2.2 minutes per kilometre back to the nearest suburb still inside. Not affiliated with Uber. Produced by Futuret3ch and MemeTorrent.</footer>
+  </div>
+  <script src="fence.js"></script>
+</body>
+</html>
